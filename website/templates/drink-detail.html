@@ -1,8 +1,7 @@
-{% extends "base.html" %} {% block title %}Drink{% endblock %} {% block content
+{% extends "base.html" %} {% block title %}{{ drinks['drinks'][0].strDrink }}{% endblock %} {% block content
     %}
     <h1 align="center">Browse Cocktails</h1>
     <ul class="list-group list-group-flush" id="notes">
-      {# {{ drinks }} #}
       {% for drink in drinks['drinks'] %}
       <li class="list-group-item">
         Name: {{ drink.strDrink }} <br>
@@ -14,59 +13,72 @@
         <br>
         Ingredients: <br>
         {% if drink.strIngredient1 %}
-        {{ drink.strIngredient1 }} <br>
+          {% if drink.strMeasure1 %}{{ drink.strMeasure1 }}{% endif %}{{ drink.strIngredient1 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient1 }}.png <br>
         {% endif %}
         {% if drink.strIngredient2 %}
-        {{ drink.strIngredient2 }} <br>
+          {% if drink.strMeasure2 %}{{ drink.strMeasure2 }}{% endif %}{{ drink.strIngredient2 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient2 }}.png <br>
         {% endif %}
         {% if drink.strIngredient3 %}
-        {{ drink.strIngredient3 }} <br>
+          {% if drink.strMeasure3 %}{{ drink.strMeasure3 }}{% endif %}{{ drink.strIngredient3 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient3 }}.png <br>
         {% endif %}
         {% if drink.strIngredient4 %}
-        {{ drink.strIngredient4 }} <br>
+          {% if drink.strMeasure4 %}{{ drink.strMeasure4 }}{% endif %}{{ drink.strIngredient4 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient4 }}.png <br>
         {% endif %}
         {% if drink.strIngredient5 %}
-        {{ drink.strIngredient5 }} <br>
+          {% if drink.strMeasure5 %}{{ drink.strMeasure5 }}{% endif %}{{ drink.strIngredient5 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient5 }}.png <br>
         {% endif %}
         {% if drink.strIngredient6 %}
-        {{ drink.strIngredient6 }} <br>
+          {% if drink.strMeasure6 %}{{ drink.strMeasure6 }}{% endif %}{{ drink.strIngredient6 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient6 }}.png <br>
         {% endif %}
         {% if drink.strIngredient7 %}
-        {{ drink.strIngredient7 }} <br>
+          {% if drink.strMeasure7 %}{{ drink.strMeasure7 }}{% endif %}{{ drink.strIngredient7 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient7 }}.png <br>
         {% endif %}
         {% if drink.strIngredient8 %}
-        {{ drink.strIngredient8 }} <br>
+          {% if drink.strMeasure8 %}{{ drink.strMeasure8 }}{% endif %}{{ drink.strIngredient8 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient8 }}.png <br>
         {% endif %}
         {% if drink.strIngredient9 %}
-        {{ drink.strIngredient9 }} <br>
+          {% if drink.strMeasure9 %}{{ drink.strMeasure9 }}{% endif %}{{ drink.strIngredient9 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient9 }}.png <br>
         {% endif %}
         {% if drink.strIngredient10 %}
-        {{ drink.strIngredient10 }} <br>
+          {% if drink.strMeasure10 %}{{ drink.strMeasure10 }}{% endif %}{{ drink.strIngredient10 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient10 }}.png <br>
         {% endif %}
         {% if drink.strIngredient11 %}
-        {{ drink.strIngredient11 }} <br>
+          {% if drink.strMeasure11 %}{{ drink.strMeasure11 }}{% endif %}{{ drink.strIngredient11 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient11 }}.png <br>
         {% endif %}
         {% if drink.strIngredient12 %}
-        {{ drink.strIngredient12 }} <br>
+          {% if drink.strMeasure12 %}{{ drink.strMeasure12 }}{% endif %}{{ drink.strIngredient12 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient12 }}.png <br>
         {% endif %}
         {% if drink.strIngredient13 %}
-        {{ drink.strIngredient13 }} <br>
+          {% if drink.strMeasure13 %}{{ drink.strMeasure13 }}{% endif %}{{ drink.strIngredient13 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient13 }}.png <br>
         {% endif %}
         {% if drink.strIngredient14 %}
-        {{ drink.strIngredient14 }} <br>
+          {% if drink.strMeasure14 %}{{ drink.strMeasure14 }}{% endif %}{{ drink.strIngredient14 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient14 }}.png <br>
         {% endif %}
         {% if drink.strIngredient15 %}
-        {{ drink.strIngredient15 }} <br>
+          {% if drink.strMeasure15 %}{{ drink.strMeasure15 }}{% endif %}{{ drink.strIngredient15 }} <br>
+          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient15 }}.png <br>
         {% endif %}
 
         {# {% set ing_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,15] %}
-
         {% for i in ing_list %}
-            {% set ing_num = "strIngredient" ~ i %}
-            {% if drink."strIngredient" ~ i %}
-                fkdjkfd
-            {% endif %}
-            
+          {% set ing_num = "strIngredient" ~ i %}
+          {% if drink."strIngredient" ~ i %}
+              fkdjkfd
+          {% endif %}
         {% endfor %} #}
 
       </li>

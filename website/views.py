@@ -47,14 +47,14 @@ def drink_detail(did):
 
     return render_template("drink-detail.html", user=current_user, drinks=res_drink)
 
-@views.route('/ingredient/<iid>/<name>', methods=['GET', 'POST'])
-def ingredient_detail(iid,name):
+@views.route('/ingredient/<iid>/<ing>', methods=['GET', 'POST'])
+def ingredient_detail(iid,ing):
     api_url = f"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid={iid}"
     getresult = requests.get(api_url)
     res_ing = getresult.json()
 
     # to get the drinks available for this ingredient
-    api_link = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={name}"
+    api_link = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={ing}"
     getdrinks = requests.get(api_link)
     results = getdrinks.json()
 
