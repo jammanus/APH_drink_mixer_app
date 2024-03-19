@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %}Search{% endblock %} {% block content
+%}
+<h1 align="center">Browse Cocktails</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {# {{ letter }} #}
+  {% for drink in letter['drinks'] %}
+  <li class="list-group-item">
+    Name: {{ drink.strDrink }} <br>
+    img-url: {{ drink.strDrinkThumb }} <br>
+    date: {{ drink.dateModified }} 
+    {# to sort by date #}
+  </li>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %} {% block title %}Detail{% endblock %} {% block content
+    %}
+    <h1 align="center">Browse Cocktails</h1>
+    <ul class="list-group list-group-flush" id="notes">
+      {# {{ drinks }} #}
+      {% for drink in drinks['drinks'] %}
+      <li class="list-group-item">
+        Name: {{ drink.strDrink }} <br>
+        Category: {{ drink.strCategory }} <br>
+        img-url: {{ drink.strDrinkThumb }} <br>
+        date: {{ drink.dateModified }} <br>
+        Instructions: {{ drink.strInstructions }} <br>
+        Glass : {{ drink.strGlass }} <br>
+        <br>
+        Ingredients: <br>
+        {% if drink.strIngredient1 %}
+        {{ drink.strIngredient1 }} <br>
+        {% endif %}
+        {% if drink.strIngredient2 %}
+        {{ drink.strIngredient2 }} <br>
+        {% endif %}
+        {% if drink.strIngredient3 %}
+        {{ drink.strIngredient3 }} <br>
+        {% endif %}
+        {% if drink.strIngredient4 %}
+        {{ drink.strIngredient4 }} <br>
+        {% endif %}
+        {% if drink.strIngredient5 %}
+        {{ drink.strIngredient5 }} <br>
+        {% endif %}
+        {% if drink.strIngredient6 %}
+        {{ drink.strIngredient6 }} <br>
+        {% endif %}
+        {% if drink.strIngredient7 %}
+        {{ drink.strIngredient7 }} <br>
+        {% endif %}
+        {% if drink.strIngredient8 %}
+        {{ drink.strIngredient8 }} <br>
+        {% endif %}
+        {% if drink.strIngredient9 %}
+        {{ drink.strIngredient9 }} <br>
+        {% endif %}
+        {% if drink.strIngredient10 %}
+        {{ drink.strIngredient10 }} <br>
+        {% endif %}
+        {% if drink.strIngredient11 %}
+        {{ drink.strIngredient11 }} <br>
+        {% endif %}
+        {% if drink.strIngredient12 %}
+        {{ drink.strIngredient12 }} <br>
+        {% endif %}
+        {% if drink.strIngredient13 %}
+        {{ drink.strIngredient13 }} <br>
+        {% endif %}
+        {% if drink.strIngredient14 %}
+        {{ drink.strIngredient14 }} <br>
+        {% endif %}
+        {% if drink.strIngredient15 %}
+        {{ drink.strIngredient15 }} <br>
+        {% endif %}
+
+        {# {% set ing_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,15] %}
+
+        {% for i in ing_list %}
+            {% set ing_num = "strIngredient" ~ i %}
+            {% if drink."strIngredient" ~ i %}
+                fkdjkfd
+            {% endif %}
+            
+        {% endfor %} #}
+
+      </li>
+      {% endfor %}
+    {% endblock %}
+    

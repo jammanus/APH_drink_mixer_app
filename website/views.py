@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
-import json
+import json, requests
 
 views = Blueprint('views', __name__)
 
@@ -23,6 +23,29 @@ def home():
 
     return render_template("home.html", user=current_user)
 
+@views.route('/browse/letter/<lett>', methods=['GET', 'POST'])
+def searchby_letter(lett):
+    api_url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?f={lett}"
+    getresult = requests.get(api_url)
+    res_letter = getresult.json()
+
+    return render_template("search-by-letter.html", user=current_user, letter=res_letter)
+
+@views.route('/browse/search/<name>', methods=['GET', 'POST'])
+def searchby_name(name):
+    api_url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={name}"
+    getresult = requests.get(api_url)
+    res_name = getresult.json()
+
+    return render_template("search-cocktail.html", user=current_user, drinks=res_name)
+
+@views.route('/drink/<did>', methods=['GET', 'POST'])
+def drink_detail(did):
+    api_url = f"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i={did}"
+    getresult = requests.get(api_url)
+    res_drink = getresult.json()
+
+    return render_template("drink-detail.html", user=current_user, drinks=res_drink)
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():  
