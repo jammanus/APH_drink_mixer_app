@@ -1,19 +1,22 @@
-{% extends "base.html" %} {% block title %}Search{% endblock %} {% block content
-    %}
-    <h1 align="center">Browse Cocktails</h1>
-    <ul class="list-group list-group-flush" id="notes">
-      {# {{ letter }} #}
-      {% for drink in drinks['drinks'] %}
-        <a href="/drink/{{ drink.idDrink }}">
-            <li class="list-group-item">
-                Name: {{ drink.strDrink }} <br>
-                img-url: {{ drink.strDrinkThumb }} <br>
-                {# to sort by date #}
-                date: {{ drink.dateModified }} <br>
-                {# Id will be used in URL redirecting to detail page #}
-                ID: {{ drink.idDrink }}
-            </li>
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    {% for drink in drinks %}
+    <div class="col mb-4">
+      <div class="card h-100 border border-dark rounded-3 shadow">
+        <a href="/drink/{{ drink.idDrink }}" class="text-decoration-none">
+          <img src="{{ drink.strDrinkThumb }}" class="card-img-top rounded-top" alt="{{ drink.strDrink }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ drink.strDrink }}</h5>
+          </div>
         </a>
-      {% endfor %}
-    {% endblock %}
-    
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

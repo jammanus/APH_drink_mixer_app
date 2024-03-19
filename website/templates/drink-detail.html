@@ -1,87 +1,34 @@
-{% extends "base.html" %} {% block title %}{{ drinks['drinks'][0].strDrink }}{% endblock %} {% block content
-    %}
-    <h1 align="center">Browse Cocktails</h1>
-    <ul class="list-group list-group-flush" id="notes">
-      {% for drink in drinks['drinks'] %}
-      <li class="list-group-item">
-        Name: {{ drink.strDrink }} <br>
-        Category: {{ drink.strCategory }} <br>
-        img-url: {{ drink.strDrinkThumb }} <br>
-        date: {{ drink.dateModified }} <br>
-        Instructions: {{ drink.strInstructions }} <br>
-        Glass : {{ drink.strGlass }} <br>
-        <br>
-        Ingredients: <br>
-        {% if drink.strIngredient1 %}
-          {% if drink.strMeasure1 %}{{ drink.strMeasure1 }}{% endif %}{{ drink.strIngredient1 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient1 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient2 %}
-          {% if drink.strMeasure2 %}{{ drink.strMeasure2 }}{% endif %}{{ drink.strIngredient2 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient2 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient3 %}
-          {% if drink.strMeasure3 %}{{ drink.strMeasure3 }}{% endif %}{{ drink.strIngredient3 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient3 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient4 %}
-          {% if drink.strMeasure4 %}{{ drink.strMeasure4 }}{% endif %}{{ drink.strIngredient4 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient4 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient5 %}
-          {% if drink.strMeasure5 %}{{ drink.strMeasure5 }}{% endif %}{{ drink.strIngredient5 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient5 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient6 %}
-          {% if drink.strMeasure6 %}{{ drink.strMeasure6 }}{% endif %}{{ drink.strIngredient6 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient6 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient7 %}
-          {% if drink.strMeasure7 %}{{ drink.strMeasure7 }}{% endif %}{{ drink.strIngredient7 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient7 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient8 %}
-          {% if drink.strMeasure8 %}{{ drink.strMeasure8 }}{% endif %}{{ drink.strIngredient8 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient8 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient9 %}
-          {% if drink.strMeasure9 %}{{ drink.strMeasure9 }}{% endif %}{{ drink.strIngredient9 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient9 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient10 %}
-          {% if drink.strMeasure10 %}{{ drink.strMeasure10 }}{% endif %}{{ drink.strIngredient10 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient10 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient11 %}
-          {% if drink.strMeasure11 %}{{ drink.strMeasure11 }}{% endif %}{{ drink.strIngredient11 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient11 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient12 %}
-          {% if drink.strMeasure12 %}{{ drink.strMeasure12 }}{% endif %}{{ drink.strIngredient12 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient12 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient13 %}
-          {% if drink.strMeasure13 %}{{ drink.strMeasure13 }}{% endif %}{{ drink.strIngredient13 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient13 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient14 %}
-          {% if drink.strMeasure14 %}{{ drink.strMeasure14 }}{% endif %}{{ drink.strIngredient14 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient14 }}.png <br>
-        {% endif %}
-        {% if drink.strIngredient15 %}
-          {% if drink.strMeasure15 %}{{ drink.strMeasure15 }}{% endif %}{{ drink.strIngredient15 }} <br>
-          img-url : https://www.thecocktaildb.com/images/ingredients/{{ drink.strIngredient15 }}.png <br>
-        {% endif %}
+{% extends "base.html" %}
 
-        {# {% set ing_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,15] %}
-        {% for i in ing_list %}
-          {% set ing_num = "strIngredient" ~ i %}
-          {% if drink."strIngredient" ~ i %}
-              fkdjkfd
+{% block title %}Drink{% endblock %}
+
+{% block content %}
+<div class="d-flex">
+
+  <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+    <div class="w-75 h-auto">
+      <h1 class="drink display-4">{{ drink[0].strDrink }}</h1>
+      <p class="category lead">{{ drink[0].strCategory }}</p>
+      <h3>Ingredients</h3>
+      <div class="list-group">
+        {% for i in range(1, 16) %}
+          {% if drink[0]['strIngredient' + i|string] %}
+            <a href="/ingredient/{{ drink[0]['strIngredient' + i|string] }}" class="list-group-item list-group-item-action">{{ drink[0]['strIngredient' + i|string] }}</a>
           {% endif %}
-        {% endfor %} #}
+        {% endfor %}
+      </div>
+      <h3>Instructions</h3>
+      <p>{{ drink[0].strInstructions }}</p>
+      <div class="drink-details">
+        <p>Glass: {{ drink[0].strGlass }}</p>
+        <p>Alcoholic: {{ drink[0].strAlcoholic }}</p>
+        <p>IBA: {{ drink[0].strIBA }}</p>
+      </div>
+    </div>
+  </div>
 
-      </li>
-      {% endfor %}
-    {% endblock %}
-    
+  <div class="p-3">
+    <img src="{{ drink[0].strDrinkThumb }}" alt="{{ drink[0].strDrink }}" class="img-fluid rounded">
+  </div>
+</div>
+{% endblock %}
