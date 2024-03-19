@@ -1,18 +1,12 @@
 # APH_drink_mixer_app
 Acret PH Hackaton Activity
 
-# Flask Web App Tutorial
-
 ## Setup & Installation
 
 Make sure you have the latest version of Python installed.
 
 ```bash
 git clone <repo-url>
-```
-
-```bash
-pip install -r requirements.txt
 ```
 
 ## Running The App
