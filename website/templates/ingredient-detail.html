@@ -10,5 +10,18 @@
         Description: {{ drink.strDescription }} <br>
       </li>
       {% endfor %}
+    </ul>
+
+    <ul class="list-group list-group-flush">
+      <h1 align="center">Drinks</h1>
+      {# {{ drinks }} #}
+      {% for drink in res_drinks['drinks'] %}
+      <li class="list-group-item">
+        Name: {{ drink.strDrink }} <br>
+        img-url: {{ drink.strDrinkThumb }} <br>
+        ID: {{ drink.idDrink }} <br>
+      </li>
+      {% endfor %}
+      </ul>
     {% endblock %}
     

@@ -47,13 +47,18 @@ def drink_detail(did):
 
     return render_template("drink-detail.html", user=current_user, drinks=res_drink)
 
-@views.route('/ingredient/<iid>', methods=['GET', 'POST'])
-def ingredient_detail(iid):
+@views.route('/ingredient/<iid>/<name>', methods=['GET', 'POST'])
+def ingredient_detail(iid,name):
     api_url = f"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid={iid}"
     getresult = requests.get(api_url)
     res_ing = getresult.json()
 
-    return render_template("ingredient-detail.html", user=current_user, drinks=res_ing)
+    # to get the drinks available for this ingredient
+    api_link = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={name}"
+    getdrinks = requests.get(api_link)
+    results = getdrinks.json()
+
+    return render_template("ingredient-detail.html", user=current_user, drinks=res_ing, res_drinks=results)
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():  
