@@ -47,6 +47,14 @@ def drink_detail(did):
 
     return render_template("drink-detail.html", user=current_user, drinks=res_drink)
 
+@views.route('/ingredient/<iid>', methods=['GET', 'POST'])
+def ingredient_detail(iid):
+    api_url = f"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid={iid}"
+    getresult = requests.get(api_url)
+    res_ing = getresult.json()
+
+    return render_template("ingredient-detail.html", user=current_user, drinks=res_ing)
+
 @views.route('/delete-note', methods=['POST'])
 def delete_note():  
     note = json.loads(request.data) # this function expects a JSON from the INDEX.js file 

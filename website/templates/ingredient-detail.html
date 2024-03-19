@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Ingredient{% endblock %} {% block content
+    %}
+    <h1 align="center">Ingredient Detail</h1>
+    <ul class="list-group list-group-flush" id="notes">
+      {# {{ drinks }} #}
+      {% for drink in drinks['drinks'] %}
+      <li class="list-group-item">
+        Name: {{ drink.strIngredient }} <br>
+        Type: {{ drink.Fruit }} <br>
+        Description: {{ drink.strDescription }} <br>
+
+      </li>
+      {% endfor %}
+    {% endblock %}
+    
