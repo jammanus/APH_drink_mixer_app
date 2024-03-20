@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
@@ -22,14 +22,22 @@ def home():
         search_query = request.form.get('search_query', '')
         name_url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={search_query}"
         drinks = get_json_data(name_url).get('drinks', [])
-        return render_template("search-cocktail.html", user=current_user, drinks=drinks)
+        return redirect(url_for('views.search', s=search_query))
 
     api_lnk = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=ice"
     random_drinks = get_json_data(api_lnk).get('drinks', [])
-
     api_cat = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"
     bycat = get_json_data(api_cat).get('drinks', [])
+
     return render_template("home.html", user=current_user, random_drinks=random_drinks, cates=bycat)
+
+@views.route('/browse/search/')
+@login_required
+def search():
+    search_query = request.args.get('s', '')
+    name_url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={search_query}"
+    drinks = get_json_data(name_url).get('drinks', [])
+    return render_template("search-cocktail.html", user=current_user, drinks=drinks)
 
 # Function to handle search by letter route
 @views.route('/browse/letter/<lett>', methods=['GET', 'POST'])

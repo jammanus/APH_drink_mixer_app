@@ -3,31 +3,44 @@
 {% block title %}{{ drink[0].strDrink }}{% endblock %}
 
 {% block content %}
-<div class="d-flex">
 
+<div class="d-flex">
   <div class="d-flex flex-grow-1 justify-content-center align-items-center">
     <div class="w-75 h-auto">
-      <h1 class="drink display-4">{{ drink[0].strDrink }}</h1>
-      <p class="category lead">{{ drink[0].strCategory }}</p>
-      <h3>Ingredients</h3>
-      <div class="list-group">
-        {% for i in range(1, 16) %}
-          {% if drink[0]['strIngredient' + i|string] %}
-            <a href="/ingredient/{{ drink[0]['strIngredient' + i|string] }}" class="list-group-item list-group-item-action">{{ drink[0]['strIngredient' + i|string] }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <h3>Instructions</h3>
-      <p>{{ drink[0].strInstructions }}</p>
-      <div class="drink-details">
-        <p>Glass: {{ drink[0].strGlass }}</p>
-        <p>Alcoholic: {{ drink[0].strAlcoholic }}</p>
-        <p>IBA: {{ drink[0].strIBA }}</p>
-      </div>
+      <section class="title mb-3">
+        <h1 class="drink display-4">{{ drink[0].strDrink }}</h1>
+        <p class="category lead">{{ drink[0].strCategory }}</p>
+      </section>
+      <section class="ingredients mb-3">
+        <h4 class="mb-3">Ingredients</h4>
+        <div class="d-flex flex-row">
+          {% for i in range(1, 16) %}
+              {% if drink[0]['strIngredient' + i|string] %}
+                <a href="/ingredient/{{ drink[0]['strIngredient' + i|string] }}" class="text-decoration-none">
+                    <div class="card mr-2">
+                        <div class="card-body">
+                            <h6 class="card-title font-weight-bold text-dark">{{ drink[0]['strIngredient' + i|string] }}</h6>
+                            <p class="card-text text-muted">{{ drink[0]['strMeasure' + i|string] }}</p>
+                        </div>
+                    </div>
+                </a>
+              {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+      <section class="instructions mb-5">
+          <h4 class="mb-3">Instructions</h4>
+          <p>{{ drink[0].strInstructions }}</p>
+      </section>
+      <section class="drink-details">
+          <p><strong>Serving:</strong> {{ drink[0].strGlass }}</p>
+          <p><strong>Strength:</strong> {{ drink[0].strAlcoholic }}</p>
+          <p><strong>IBA:</strong> {{ drink[0].strIBA }}</p>
+      </section>
     </div>
   </div>
 
-  <div class="p-3">
+  <div>
     <img src="{{ drink[0].strDrinkThumb }}" alt="{{ drink[0].strDrink }}" class="img-fluid rounded">
   </div>
 </div>

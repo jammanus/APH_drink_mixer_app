@@ -3,11 +3,18 @@
 {% block title %}{{ ingredient[0].strIngredient }}{% endblock %}
 
 {% block content %}
+
 <div class="container py-5">
     <div class="row">
         <div class="col-md-6">
-            <div class="sticky-top py-5">
+            <div>
                 <img src="https://www.thecocktaildb.com/images/ingredients/{{ ingredient[0].strIngredient }}.png" class="img-fluid rounded shadow-lg" alt="{{ ingredient[0].strIngredient }}">
+                <div class="mt-3 text-center">
+                    <h6>Type:</h6>
+                    <p>{{ ingredient[0].strType }}</p>
+                    <h6>Description:</h6>
+                    <p>{{ ingredient[0].strDescription | truncate(200) }}</p>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
