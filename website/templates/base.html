@@ -11,6 +11,10 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="{{ url_for('static', filename='logo.png') }}" width="50" height="50" class="d-inline-block align-top" alt="Logo">
+        <span class="navbar-text ml-3 text-white font-weight-bold">gitdrunk</span>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,10 +31,11 @@
       </div>
     </nav>
   </header>
+
   
-  <main>
-    <div class="container-fluid p-0">
-      <div class="row justify-content-center search-block bg-light py-5">
+  <div class="container-fluid p-0">
+    <section>
+        <div class="d-flex justify-content-center align-items-center bg-light py-5">
         <div class="col-md-6 p-4">
           <form class="form-inline justify-content-center" method="POST" action="{{ url_for('views.home') }}">
             <input class="form-control mr-2" type="search" placeholder="Search by Cocktail" aria-label="Search" name="search_query">
@@ -38,9 +43,9 @@
           </form>
         </div>
       </div>
-      {% block content %}{% endblock %}
-    </div>
-  </main>
+    </section>
+    {% block content %}{% endblock %}
+  </div>
   
   <footer class="bg-dark text-light py-4">
     <div class="container">
