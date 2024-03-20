@@ -1,91 +1,96 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      crossorigin="anonymous"
-    />
-
-    <title>{% block title %}Home{% endblock %}</title>
-  </head>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Home{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar"
-      >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
           {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sign-up">Sign Up</a></li>
           {% endif %}
-        </div>
+        </ul>
       </div>
     </nav>
-
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  </header>
+  
+  <main>
+    <div class="container-fluid p-0">
+      <div class="row justify-content-center search-block bg-light py-5">
+        <div class="col-md-6 p-4">
+          <form class="form-inline justify-content-center" method="POST" action="{{ url_for('views.home') }}">
+            <input class="form-control mr-2" type="search" placeholder="Search by Cocktail" aria-label="Search" name="search_query">
+            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> Search</button>
+          </form>
+        </div>
+      </div>
+      {% block content %}{% endblock %}
     </div>
-    {% else %}
-    <div class="alert alert-success alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  </main>
+  
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <h2 class="mb-4">Browse by Name</h2>
+      <ul class="list-unstyled d-flex justify-content-center">
+        <li><a href="/browse/letter/a" class="text-light m-2">A</a>/ </li>
+        <li><a href="/browse/letter/b" class="text-light m-2">B</a>/ </li>
+        <li><a href="/browse/letter/c" class="text-light m-2">C</a>/ </li>
+        <li><a href="/browse/letter/d" class="text-light m-2">D</a>/ </li> 
+        <li><a href="/browse/letter/e" class="text-light m-2">E</a>/ </li> 
+        <li><a href="/browse/letter/f" class="text-light m-2">F</a>/ </li> 
+        <li><a href="/browse/letter/g" class="text-light m-2">G</a>/ </li> 
+        <li><a href="/browse/letter/h" class="text-light m-2">H</a>/ </li> 
+        <li><a href="/browse/letter/i" class="text-light m-2">I</a>/ </li> 
+        <li><a href="/browse/letter/j" class="text-light m-2">J</a>/ </li> 
+        <li><a href="/browse/letter/k" class="text-light m-2">K</a>/ </li> 
+        <li><a href="/browse/letter/l" class="text-light m-2">L</a>/ </li> 
+        <li><a href="/browse/letter/m" class="text-light m-2">M</a>/ </li> 
+        <li><a href="/browse/letter/n" class="text-light m-2">N</a>/ </li> 
+        <li><a href="/browse/letter/o" class="text-light m-2">O</a>/ </li> 
+        <li><a href="/browse/letter/p" class="text-light m-2">P</a>/ </li> 
+        <li><a href="/browse/letter/q" class="text-light m-2">Q</a>/ </li> 
+        <li><a href="/browse/letter/r" class="text-light m-2">R</a>/ </li> 
+        <li><a href="/browse/letter/s" class="text-light m-2">S</a>/ </li> 
+        <li><a href="/browse/letter/t" class="text-light m-2">T</a>/ </li> 
+        <li><a href="/browse/letter/u" class="text-light m-2">U</a>/ </li> 
+        <li><a href="/browse/letter/v" class="text-light m-2">V</a>/ </li> 
+        <li><a href="/browse/letter/w" class="text-light m-2">W</a>/ </li> 
+        <li><a href="/browse/letter/x" class="text-light m-2">X</a>/ </li> 
+        <li><a href="/browse/letter/y" class="text-light m-2">Y</a>/ </li> 
+        <li><a href="/browse/letter/z" class="text-light m-2">Z</a></li>
+      </ul>
     </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+  </footer>
 
-    <div class="container">{% block content %} {% endblock %}</div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-{% block javascript %}
-    <script type="text/javascript">
-      function deleteNote(noteId) {
-  fetch("/delete-note", {
-    method: "POST",
-    body: JSON.stringify({ noteId: noteId }),
-  }).then((_res) => {
-    window.location.href = "/";
-  });
-  }
-</script>
-{% endblock %}
-  </body>
+  {% block javascript %}
+  <script type="text/javascript">
+    function deleteNote(noteId) {
+      fetch("/delete-note", {
+        method: "POST",
+        body: JSON.stringify({ noteId: noteId }),
+      }).then((_res) => {
+        window.location.href = "/";
+      });
+    }
+  </script>
+  {% endblock %}
+</body>
 </html>
