@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Filter by Category{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+    {% for drink in categories %}
+    <div class="col mb-4">
+      <div class="card h-100 border border-dark rounded-3 shadow">
+        <a href="/drink/{{ drink.idDrink }}" class="text-decoration-none">
+          <img src="{{ drink.strDrinkThumb }}" class="card-img-top rounded-top" alt="{{ drink.strDrink }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ drink.strDrink }}</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<hr><br>
+<h1 align="center">Categories</h1>
+<div class="col-md-9">
+  <div class="list-group">
+    {% for cat in cates %}
+      <a href="/browse/category/{{ cat.strCategory }}" class="list-group-item list-group-item-action">{{ cat.strCategory }}</a>
+    {% endfor %}
+  </div>
+</div>
+<br>
+
+{% endblock %}
